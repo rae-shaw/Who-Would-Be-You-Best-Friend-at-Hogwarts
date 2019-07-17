@@ -1,19 +1,20 @@
 
 
 let questionNumber=0;
-let ravenclaw=0;
-let gryffindor=0;
-let slytherin=0;
-let huflepuff=0;
+let ravenclawScore=0;
+let gryffindorScore=0;
+let slytherinScore=0;
+let hufflepuffScore=0;
 
 const apiKey=`$2a$10$Wp69A2MNnqAJzwpQ/Mvfee8rpq7/4xQ841f.uFUx2MAaBGKl3yPTe`
 const searchURL= 'www.potterapi.com/v1/characters/'
-const constantParams ='?role=student'
+const constantParams ='role=student'
+
 //responsible for creating the quiz
 function createQuiz(){
 	handleClickToStart();
-  	console.log('create quiz ran!')
-  	//nextQuestion();
+  	console.log('create quiz ran!');
+  	nextQuestion();
 }
 
 //respsonsible for handling the click to start
@@ -69,8 +70,6 @@ function generateQuestion(){
 function renderQuestion(){
 	$('.questionForm').html(generateQuestion());
 	trackQuestionNumber();
-	nextQuestion();
-
 }
 
 function trackQuestionNumber(){
@@ -78,33 +77,91 @@ function trackQuestionNumber(){
 }
 
 function trackHouseScore(answernumber){
-	ravenclaw += STORE[questionNumber].answers[answernumber].ravenclaw;
+	ravenclawScore += STORE[questionNumber-1].answers[answernumber].ravenclaw;
+	hufflepuffScore += STORE[questionNumber-1].answers[answernumber].hufflepuff;
+	slytherinScore += STORE[questionNumber-1].answers[answernumber].slytherin;
+	gryffindorScore += STORE[questionNumber-1].answers[answernumber].gryffindor;
 }
-
 
 
 function nextQuestion(){
 	$('.questionForm').on('click', '.submit', function (event) {
-		if ($('.checkAnswer').is(':checked')){
+		event.preventDefault();
+		$('.checkAnswer').is(':checked')
 			let selected = $('input:checked');
 			let userAnswer = selected.val();
-		} else {
-			// UH OH NO ANSWER SELECTED OH NO
-		}
-
-
-		// figure out what answer the user clicked and store it in a variable
-
-		// track the house score change for that answer
-
-		// render the next question
+			trackHouseScore(userAnswer);
+	
 		renderQuestion();
 	});
 }
 
-function renderResults();
+function renderResults(){
+	/*console.log(ravenclawScore, gryffindorScore, slytherinScore, hufflepuffScore);*/
+	createHouseObject();
+}
+
+//responsible for determining which house goes into the API call
+function createHouseObject(){
+	let finalScores = [{ravenclawScore: ravenclawScore}, 
+					{gryffindorScore: gryffindorScore}, 
+					{slytherinScore: slytherinScore}, 
+					{hufflepuffScore: hufflepuffScore}]
+	console.log(finalScores[0]);
+	highestHouse(finalScores);
+	}
+
+function highestHouse(scoreArray){
+	let maxScore=0;
+	let houseName='';
+	for (let i=0; i<scoreArray.length; i++){
+
+			let firstObj = scoreArray[i];
+			console.log(Object.keys(firstObj));
+			let firstKey = Object.keys(firstObj);
+			if (scoreArray[i][firstKey[0]]>maxScore){
+				maxScore=scoreArray[i][firstKey[0]];
+				houseName=firstKey[0];
+			}
+
+			
+	}
+	console.log(houseName);
+	createQuery(houseName);
+}
+
+
+//responsible for creating the query for the API call
+function createQuery(houseName){
+	if (houseName == 'hufflepuffScore'){
+		console.log('success');
+		let houseFinal = 'Hufflepuff';
+		let dumblesdoresArmy = true;
+	}
+	/*else if (houseName == 'ravenclawScore'){
+		let houseQuery = 'Ravenclaw';
+		let dumblesdoresArmy = true;
+	}
+	else if (houseName == 'ravenclawScore'){
+		let houseQuery = 'Ravenclaw';
+		let dumblesdoresArmy = true;
+	}
+	else{
+		let houseQuery = 'Slytherin';
+		let dumblesdoresArmy = false;
+	}*/
+	getCharacters(houseFinal, dumblesdoresArmy);
+}
+
+//responsible for making the API call and getting characters
+function getCharacters(houseQuery, dumblesdoresArmy){
+	queryString = `https://${searchURL}?key=${apiKey}&${constantParams}&house=${houseQuery}&dumblesdoresArmy=${dumblesdoresArmy}`
+}
+
+//determine which house for API call 
+	//create API call (if slytherin, just add role=student; if other houses, add dumblesdoresArmy=true&role=student)
+
+
+//function apiCall
 	
-
-
-
 createQuiz();

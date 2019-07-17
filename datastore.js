@@ -66,31 +66,31 @@ const STORE = [
 			{text: 'Ravenclaw',
 			ravenclaw: 10,
 			hufflepuff: 5,
-			slytherin: 0,
-			gryffindor: 2
-			}
+			slytherin: 2,
+			gryffindor: 0
+			},
 
 			{text:'Hufflepuff',
 			ravenclaw: 5,
 			hufflepuff: 10,
 			slytherin: 0,
 			gryffindor: 2
-				}
+				},
 
 			{text:'Slytherin',
 			ravenclaw: 5,
 			hufflepuff: 0,
 			slytherin: 10,
 			gryffindor: 2 
-				}
+				},
 
-			{text:'Gryffindor'
+			{text:'Gryffindor',
 			ravenclaw: 2,
 			hufflepuff: 5,
 			slytherin: 0,
 			gryffindor: 10
-		}
-			], 
+			}
+		], 
 	},
 
 	{
@@ -101,28 +101,29 @@ const STORE = [
 			hufflepuff: 10,
 			slytherin: 0,
 			gryffindor: 5
-		}
+			},
 			{text: 'Camping in the mountains', 
 			ravenclaw: 10,
 			hufflepuff: 5,
 			slytherin: 0,
 			gryffindor: 2
-		}
+			},
 			{text: 'Option 3', 
 			ravenclaw: 10,
 			hufflepuff: 5,
 			slytherin: 0,
 			gryffindor: 2
-			}
+			},
 			
-			{text:'Option 4'
+			{text:'Option 4',
 			ravenclaw: 10,
 			hufflepuff: 5,
 			slytherin: 0,
 			gryffindor: 2
-		}
+			}
 		], 
 	},
+]
 
 	/*{
 		question: 'What class are you most excited about?',
@@ -196,4 +197,4 @@ const STORE = [
 			'Option 3', 
 			'Option 4'], 
 	}
-	]
+	]*/
