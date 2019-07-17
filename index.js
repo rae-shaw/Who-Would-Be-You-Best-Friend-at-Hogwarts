@@ -131,37 +131,48 @@ function highestHouse(scoreArray){
 }
 
 
-//responsible for creating the query for the API call
+//determine which house for the API call 
 function createQuery(houseName){
 	if (houseName == 'hufflepuffScore'){
 		console.log('success');
 		let houseFinal = 'Hufflepuff';
 		let dumblesdoresArmy = true;
-	}
-	/*else if (houseName == 'ravenclawScore'){
-		let houseQuery = 'Ravenclaw';
-		let dumblesdoresArmy = true;
+		getCharacters(houseFinal, dumblesdoresArmy);
 	}
 	else if (houseName == 'ravenclawScore'){
-		let houseQuery = 'Ravenclaw';
+		let houseFinal = 'Ravenclaw';
 		let dumblesdoresArmy = true;
+		getCharacters(houseFinal, dumblesdoresArmy);
+	}
+	else if (houseName == 'gryffindorScore'){
+		let houseFinal = 'Gryfindor';
+		let dumblesdoresArmy = true;
+		getCharacters(houseFinal, dumblesdoresArmy);
 	}
 	else{
-		let houseQuery = 'Slytherin';
+		let houseFinal = 'Slytherin';
 		let dumblesdoresArmy = false;
-	}*/
-	getCharacters(houseFinal, dumblesdoresArmy);
+		getCharacters(houseFinal, dumblesdoresArmy);
+	}
+	
 }
 
-//responsible for making the API call and getting characters
+//responsible for creating the query and making the API call
 function getCharacters(houseQuery, dumblesdoresArmy){
-	queryString = `https://${searchURL}?key=${apiKey}&${constantParams}&house=${houseQuery}&dumblesdoresArmy=${dumblesdoresArmy}`
+	queryString = `https://${searchURL}?key=${apiKey}&${constantParams}&house=${houseQuery}&dumbledoresArmy=${dumblesdoresArmy}`
+	fetch (queryString)
+		.then(response => {
+      	if (response.ok) {
+        	return response.json();
+      	}
+      	throw new Error(response.statusText);
+    	})
+    	.then(responseJson => console.log(responseJson))
+   	 	.catch(err => {
+      	$('#js-error-message').text(`Something went wrong: ${err.message}`);
+    });
 }
 
-//determine which house for API call 
-	//create API call (if slytherin, just add role=student; if other houses, add dumblesdoresArmy=true&role=student)
 
-
-//function apiCall
 	
 createQuiz();
