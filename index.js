@@ -6,6 +6,15 @@ let gryffindorScore=0;
 let slytherinScore=0;
 let hufflepuffScore=0;
 
+const houseIndex = {
+	ravenclaw: 0,
+	gryffindor: 1,
+	slytherin: 2,
+	hufflepuff: 3
+}
+
+const houseNames = ['Ravenclaw', 'Gryffindor', 'Slytherin', 'Hufflepuff']
+
 const apiKey=`$2a$10$Wp69A2MNnqAJzwpQ/Mvfee8rpq7/4xQ841f.uFUx2MAaBGKl3yPTe`
 const searchURL= 'www.potterapi.com/v1/characters/'
 const constantParams ='role=student'
@@ -54,14 +63,14 @@ function generateQuestion(){
 	    				<input type="radio" value="3" name="answer" class="checkAnswer" required>
 	    				<span>${STORE[questionNumber].answers[3].text}</span>
 	    				</label>
-	    				<button type="submit" class="submit">Submit</button>
+	    				<button role= submit class="submit">Next</button>
 	    			</fieldset>
 	    			<p class='container'>
 	    			</p>
 	    		</form>
 	    </div>`;
   	} else {
-		renderResults();
+		patronusQuestion();
 	}
 
 }
@@ -87,90 +96,122 @@ function trackHouseScore(answernumber){
 function nextQuestion(){
 	$('.questionForm').on('click', '.submit', function (event) {
 		event.preventDefault();
-		$('.checkAnswer').is(':checked')
-			let selected = $('input:checked');
-			let userAnswer = selected.val();
-			trackHouseScore(userAnswer);
-	
-		renderQuestion();
+		console.log('clicked submit!')
+		if ($('.checkAnswer').is(':checked')){
+				let selected = $('input:checked');
+				let userAnswer = selected.val();
+				trackHouseScore(userAnswer);
+				renderQuestion();
+		}
+		else{ 
+			alert("Please select an answer.")
+		}
+		
 	});
 }
 
+//responsible for displaying the final question
+function patronusQuestion(){
+	$('.questionForm').html(`<div class="question-10">
+	    	<h2>What is your Patronus?</h2>
+	    		<form id='myform'>
+	    			<input type=text id='patronus' value=Unicorn required</input>
+	    			<button type="submit"class="resultsButton">Find my BFF!</button>
+	    		</form>
+	    		</div>`
+	    );
+	typeResults();
+}
+
+function typeResults() {
+	$('.questionForm').on('click', '.resultsButton', function(event){
+		console.log('clicked resultsButton')
+		event.preventDefault();
+		renderResults();
+	});
+}
+
+function getReady(arrayJson){
+	const patronus = $('#patronus').val();
+	let hashNumber = hash(patronus);
+	console.log("getReady: hashNumber is " + hashNumber);
+	let index= hashNumber % arrayJson.length;
+	renderResultsPage(arrayJson[index]);	
+}
+
+
+
+function renderResultsPage(character){
+	let characterName = character.name;
+	//let characterURL = 
+	$('.questionForm').html(
+		`<div class=results>
+		<h2>Great news! Your BFF at Hogwarts is ${characterName}</h2>
+			<p>To learn more about your BFF click<a href='https://harrypotter.fandom.com/hermione_granger' target= '_blank'> here.</a></p>
+			</div>`);
+}
+
 function renderResults(){
-	/*console.log(ravenclawScore, gryffindorScore, slytherinScore, hufflepuffScore);*/
-	createHouseObject();
+	
+	let houseArray = createHouseObject();
+	let houseName = newHighestHouse(houseArray);
+	return getCharacters(houseName);
 }
 
 //responsible for determining which house goes into the API call
 function createHouseObject(){
-	let finalScores = [{ravenclawScore: ravenclawScore}, 
-					{gryffindorScore: gryffindorScore}, 
-					{slytherinScore: slytherinScore}, 
-					{hufflepuffScore: hufflepuffScore}]
+	// let finalScores = [{ravenclawScore:  ravenclawScore}, 
+	// 	               {gryffindorScore: gryffindorScore}, 
+	// 	               {slytherinScore:  slytherinScore}, 
+	// 	               {hufflepuffScore: hufflepuffScore}]
+	let finalScores = [ravenclawScore, gryffindorScore, slytherinScore, hufflepuffScore];
+
 	console.log(finalScores[0]);
-	highestHouse(finalScores);
-	}
+	return finalScores;
+}
 
-function highestHouse(scoreArray){
-	let maxScore=0;
-	let houseName='';
+function newHighestHouse(scoreArray) {
+	let maxScore = 0;
+	let newIndex = 0;
 	for (let i=0; i<scoreArray.length; i++){
-
-			let firstObj = scoreArray[i];
-			console.log(Object.keys(firstObj));
-			let firstKey = Object.keys(firstObj);
-			if (scoreArray[i][firstKey[0]]>maxScore){
-				maxScore=scoreArray[i][firstKey[0]];
-				houseName=firstKey[0];
-			}
-
-			
+		if (scoreArray[i]>maxScore){
+			maxScore=scoreArray[i];
+			newIndex=i;
+		}
 	}
+	let houseName = houseNames[newIndex];
 	console.log(houseName);
-	createQuery(houseName);
+	return houseName;
 }
 
-
-//determine which house for the API call 
-function createQuery(houseName){
-	if (houseName == 'hufflepuffScore'){
-		console.log('success');
-		let houseFinal = 'Hufflepuff';
-		let dumblesdoresArmy = true;
-		getCharacters(houseFinal, dumblesdoresArmy);
-	}
-	else if (houseName == 'ravenclawScore'){
-		let houseFinal = 'Ravenclaw';
-		let dumblesdoresArmy = true;
-		getCharacters(houseFinal, dumblesdoresArmy);
-	}
-	else if (houseName == 'gryffindorScore'){
-		let houseFinal = 'Gryfindor';
-		let dumblesdoresArmy = true;
-		getCharacters(houseFinal, dumblesdoresArmy);
-	}
-	else{
-		let houseFinal = 'Slytherin';
-		let dumblesdoresArmy = false;
-		getCharacters(houseFinal, dumblesdoresArmy);
-	}
-	
-}
 
 //responsible for creating the query and making the API call
-function getCharacters(houseQuery, dumblesdoresArmy){
-	queryString = `https://${searchURL}?key=${apiKey}&${constantParams}&house=${houseQuery}&dumbledoresArmy=${dumblesdoresArmy}`
+function getCharacters(houseName){
+	let dumbledoresArmy=true;
+	if (houseName == 'Slytherin'){
+		dumbledoresArmy = false;
+	}
+
+	queryString = `https://${searchURL}?key=${apiKey}&${constantParams}&house=${houseName}&dumbledoresArmy=${dumbledoresArmy}`
 	fetch (queryString)
 		.then(response => {
-      	if (response.ok) {
-        	return response.json();
-      	}
-      	throw new Error(response.statusText);
+      		if (response.ok) {
+        		return response.json();
+      		}
+      		throw new Error(response.statusText);
     	})
-    	.then(responseJson => console.log(responseJson))
+    	.then(responseJson => {
+    		getReady(responseJson);
+    		console.log(responseJson)
+    	})
    	 	.catch(err => {
-      	$('#js-error-message').text(`Something went wrong: ${err.message}`);
-    });
+      		$('#js-error-message').text(`Something went wrong: ${err.message}`);
+    	});
+}
+
+function hash(patronus){
+	let hashNumber=patronus.charCodeAt(0);
+	return hashNumber;
 }
 
 
