@@ -98,7 +98,7 @@ const STORE = [
 	},
 
 	{
-		question: 'The finals are coming up soon!',
+		question: 'The finals are coming up soon! You',
 		answers: [
 			{text: 'Organize study groups and check-in to make sure everyone is good!',
 			ravenclaw: 2,
@@ -142,7 +142,7 @@ const STORE = [
 			hufflepuff: 0,
 			gryffindor: 5
 			},
-			{text: 'whips out a creative and damning quip.', 
+			{text: 'whipping out a creative and damning quip.', 
 			ravenclaw: 10,
 			slytherin: 5,
 			hufflepuff: 2,
@@ -172,7 +172,7 @@ const STORE = [
 			gryffindor:10,
 			slytherin: 2
 			},
-			{text: 'In my garden for the forseeable future.',
+			{text: 'In my garden.',
 			ravenclaw: 5,
 			hufflepuff:10,
 			gryffindor:2,
@@ -192,19 +192,19 @@ const STORE = [
 	{
 		question: `When you miss the train to Hogwarts, you...`,
 		answers: [
-			{text: 'start making a list of feasible excuses for why it happened', 
+			{text: 'start making a list of feasible excuses for why it happened.', 
 			ravenclaw: 5,
 			slytherin: 10,
 			hufflepuff: 2,
 			gryffindor: 2
 			},
-			{text: 'take a calming, deep breath, sends an owl to the school, and waits for yout parents to find you', 
+			{text: 'take a calming, deep breath, send an owl to the school, and wait for your parents to find you.', 
 			ravenclaw: 10,
 			slytherin: 2,
 			hufflepuff: 5,
 			gryffindor: 0
 			},
-			{text: `aren't really worried because you know your friends will notice you're missing and tell someone`, 
+			{text: `aren't really worried because you know your friends will notice you're missing and tell someone.`, 
 			ravenclaw: 2,
 			slytherin: 0,
 			hufflepuff: 10,

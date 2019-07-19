@@ -1,3 +1,79 @@
-.score-question-counter {
-	display: none;
+font-family: 'Fontdiner Swanky', cursive;
+font-family: 'Cormorant Unicase', serif;
+font-family: 'Jolly Lodger', cursive;
+font-family: 'Bigelow Rules', cursive;
+font-family: 'Oswald', sans-serif;
+
+
+* {
+	box-sizing: border-box;
+}
+
+
+body {
+	display: flex;
+	flex-direction: column;
+	background-image: url(rikki-austin-cathedralhallway.jpg);
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	align-items: center;
+	font-family: 'Oswald', sans-serif;
+  	font-size: 32px;
+
+}
+
+header {
+	color: white;
+}
+
+ul {
+	list-style:none;
+}
+
+.question-score-counter {
+	align-content: flex-end;
+}
+
+main {
+	flex-direction:column;
+	display: flex;
+	padding: 2em 3em;
+}
+
+h1, h2 {
+	font-family: 'Fontdiner Swanky', cursive;
+}
+
+.quizStart {
+	background-color: wheat;
+	text-align: center;
+	padding: 2em 3em;
+}
+
+.questionForm {
+	display: flex;
+	margin: 1em 1em;
+	text-align: center;
+	background-color: wheat;
+}
+
+.answerOption {
+	text-align: justify;
+	align-items: center;
+}
+
+fieldset {
+	display: flex;
+	border: none;
+	align-items: center;
+}
+
+.resultsButton, .submit, .startButton {
+	font-family: 'Fontdiner Swanky', cursive;
+	padding: 10px 24px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 2px;
+	border: black solid 1px;
+	width: 75%;
 }
