@@ -14,7 +14,6 @@ const houseIndex = {
 }
 
 const houseNames = ['Ravenclaw', 'Gryffindor', 'Slytherin', 'Hufflepuff']
-
 const apiKey=`$2a$10$Wp69A2MNnqAJzwpQ/Mvfee8rpq7/4xQ841f.uFUx2MAaBGKl3yPTe`
 const searchURL= 'www.potterapi.com/v1/characters/'
 const constantParams ='role=student'
@@ -23,7 +22,7 @@ const constantParams ='role=student'
 function createQuiz(){
 	handleClickToStart();
   	console.log('create quiz ran!');
-  	nextQuestion();
+  	answerValueNextQuestionRender();
 }
 
 //respsonsible for handling the click to start
@@ -60,8 +59,8 @@ function generateQuestion(){
 	    					<span>${STORE[questionNumber].answers[2].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    				<input type="radio" value="3" name="answer" class="checkAnswer" required>
-	    				<span>${STORE[questionNumber].answers[3].text}</span>
+	    					<input type="radio" value="3" name="answer" class="checkAnswer" required>
+	    					<span>${STORE[questionNumber].answers[3].text}</span>
 	    				</label>
 	    				<button role= submit class="submit">Next</button>
 	    			</fieldset>
@@ -81,10 +80,12 @@ function renderQuestion(){
 	trackQuestionNumber();
 }
 
+//responsible for tracking which question the user is on
 function trackQuestionNumber(){
 	questionNumber ++;
 }
 
+//responsible for tracking the scores of each house
 function trackHouseScore(answernumber){
 	ravenclawScore += STORE[questionNumber-1].answers[answernumber].ravenclaw;
 	hufflepuffScore += STORE[questionNumber-1].answers[answernumber].hufflepuff;
@@ -92,8 +93,8 @@ function trackHouseScore(answernumber){
 	gryffindorScore += STORE[questionNumber-1].answers[answernumber].gryffindor;
 }
 
-
-function nextQuestion(){
+//responsible for procuring the answer value and advancing the user to the render of the next question
+function answerValueNextQuestionRender(){
 	$('.questionForm').on('click', '.submit', function (event) {
 		event.preventDefault();
 		console.log('clicked submit!')
@@ -112,17 +113,19 @@ function nextQuestion(){
 
 //responsible for displaying the final question
 function patronusQuestion(){
-	$('.questionForm').html(`<div class="question-10">
+	$('.questionForm').html(
+		`<div class="question-10">
 	    	<h2>What is your Patronus?</h2>
 	    		<form id='myform'>
 	    			<input type=text id='patronus' value=Unicorn required</input>
 	    			<button type="submit"class="resultsButton">Find my BFF!</button>
 	    		</form>
-	    		</div>`
-	    );
+	    </div>`
+	);
 	typeResults();
 }
 
+//responsible for the click action on the patronus question page
 function typeResults() {
 	$('.questionForm').on('click', '.resultsButton', function(event){
 		console.log('clicked resultsButton')
@@ -131,7 +134,8 @@ function typeResults() {
 	});
 }
 
-function getReady(arrayJson){
+//responsible for determining the final answer using the hash and the results of the API call
+function getFinalCharacter(arrayJson){
 	const patronus = $('#patronus').val();
 	let hashNumber = hash(patronus);
 	console.log("getReady: hashNumber is " + hashNumber);
@@ -139,38 +143,34 @@ function getReady(arrayJson){
 	renderResultsPage(arrayJson[index]);	
 }
 
-
-
+//responsible for creating the variables to render the results page and rendering the page
 function renderResultsPage(character){
 	let characterName = character.name;
-	//let characterURL = 
+	let characterURL = `https://harrypotter.fandom.com/${characterName.split(' ').join('_')}`;
 	$('.questionForm').html(
 		`<div class=results>
-		<h2>Great news! Your BFF at Hogwarts is ${characterName}</h2>
-			<p>To learn more about your BFF click<a href='https://harrypotter.fandom.com/hermione_granger' target= '_blank'> here.</a></p>
-			</div>`);
+			<h2>Great news! Your BFF at Hogwarts is ${characterName}</h2>
+			<p>To learn more about your BFF click<a href='${characterURL}' target= '_blank'> here.</a></p>
+		</div>`
+	);
 }
 
+//responsible for creating the variables for the API call anc calling the function to make the API call
 function renderResults(){
-	
-	let houseArray = createHouseObject();
-	let houseName = newHighestHouse(houseArray);
+	let houseArray = createTotalScoresArray();
+	let houseName = highestHouse(houseArray);
 	return getCharacters(houseName);
 }
 
-//responsible for determining which house goes into the API call
-function createHouseObject(){
-	// let finalScores = [{ravenclawScore:  ravenclawScore}, 
-	// 	               {gryffindorScore: gryffindorScore}, 
-	// 	               {slytherinScore:  slytherinScore}, 
-	// 	               {hufflepuffScore: hufflepuffScore}]
+//responsible for creating an array of final, total scores
+function createTotalScoresArray(){
 	let finalScores = [ravenclawScore, gryffindorScore, slytherinScore, hufflepuffScore];
-
 	console.log(finalScores[0]);
 	return finalScores;
 }
 
-function newHighestHouse(scoreArray) {
+//responsible for determing which house has the highest score
+function highestHouse(scoreArray) {
 	let maxScore = 0;
 	let newIndex = 0;
 	for (let i=0; i<scoreArray.length; i++){
@@ -183,7 +183,6 @@ function newHighestHouse(scoreArray) {
 	console.log(houseName);
 	return houseName;
 }
-
 
 //responsible for creating the query and making the API call
 function getCharacters(houseName){
@@ -201,19 +200,17 @@ function getCharacters(houseName){
       		throw new Error(response.statusText);
     	})
     	.then(responseJson => {
-    		getReady(responseJson);
+    		getFinalCharacter(responseJson);
     		console.log(responseJson)
     	})
    	 	.catch(err => {
       		$('#js-error-message').text(`Something went wrong: ${err.message}`);
     	});
 }
-
+//responsible for taking the user entered string(patronus) and creating a hash
 function hash(patronus){
 	let hashNumber=patronus.charCodeAt(0);
 	return hashNumber;
 }
-
-
 	
 createQuiz();

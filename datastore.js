@@ -1,63 +1,3 @@
-/*const EXAMPLESTORE = [
-	{
-		question: 'Where would the sorting hat place you?',
-		answers: [
-			{ // answers[0].text = Ravenclaw; answers[0].ravenclaw = 10
-				text:'Ravenclaw', 
-				ravenclaw: 10,
-				hufflepuff: 2,
-			}	
-			'Hufflepuff', 
-			'Slytherin', 
-			'Gryffindor'
-		], 
-	},
-	{
-		question: 'Where would the sorting hat place you?',
-		answers: [ // answers[0][0] - (answer),  answers[0][1] (ravenclaw)
-			['Ravenclaw', 10, 5, 0, 2],
-			'Hufflepuff', 
-			'Slytherin', 
-			'Gryffindor'
-		], 
-	},
-	{
-		question: 'Where would the sorting hat place you?',
-		answers: [ // answers[0] - (answer),  scores[0] (scores array), scores[0][0] answer 0 score 0
-			// for i in scores[answernumber].length { myscores[i] += scores[answernumber][i] }
-			'Ravenclaw',
-			'Hufflepuff', 
-			'Slytherin', 
-			'Gryffindor'
-		],
-		scores: [
-			[10, 4, 2, 0],
-			[4, 10, 2, 0],
-
-		]
-	},
-	{
-		// ALL questions are worth 1 point.
-		question: 'Where would the sorting hat place you?',
-		answers: [ 
-			['Ravenclaw', 'ravenclaw']
-			'Hufflepuff', 
-			'Slytherin', 
-			'Gryffindor'
-			['Beaches!', 'hufflepuff']
-		],
-		// myscores[ answers[answernumber][1] ] += 1;
-
-		// scores way
-		scores: [
-			'hufflepuff',
-			'slytherin'
-		]
-		// myscores[ scores[answernumber] ] += 1;
-	}
-
-]*/
-
 const STORE = [
 
 	{
@@ -123,9 +63,8 @@ const STORE = [
 			}
 		], 
 	},
-]
 
-	/*{
+	{
 		question: 'What class are you most excited about?',
 		answers: [
 			{text: 'Herbology', 
@@ -155,7 +94,7 @@ const STORE = [
 			gryffindor: 2,
 			slytherin: 5
 			}
-			], 
+		], 
 	},
 
 	{
@@ -173,31 +112,31 @@ const STORE = [
 			slytherin: 5,
 			gryffindor: 0
 			},
-			{text: `I'll study after quidditch practice. And dinner. I'm sure it will be fine.`
+			{text: `I'll study after quidditch practice. And dinner. I'm sure it will be fine.`,
 			ravenclaw: 0,
 			hufflepuff: 5,
 			gryffindor: 10,
 			syltherin: 2
 			},
-			{text: 'Look over my meticulous and detailed notes.'
+			{text: 'Look over my meticulous and detailed notes.',
 			ravenclaw: 5,
 			slytherin: 10,
 			hufflepuff: 0,
 			gryffindor: 0
 			}
-			], 
+		], 
 	},
 
 	{
 		question: 'Your BFF jumps to your defense by',
 		answers: [
-			{text: 'first checking on you and then making sure the other person understands how they're hurt you., 
+			{text: `first checking on you and then making sure the other person understands how they're hurt you.`, 
 			ravenclaw: 5,
 			slytherin: 0,
 			hufflepuff: 10,
 			gryffindor: 2
 			},
-			{text: 'leaving slugs in the other person's bed.', 
+			{text: `leaving slugs in the other person's bed.`, 
 			ravenclaw: 2,
 			slytherin: 10,
 			hufflepuff: 0,
@@ -215,7 +154,7 @@ const STORE = [
 			gryffindor: 10,
 			hufflepuff: 10
 			}
-			], 
+		], 
 	},
 
 	{
@@ -227,10 +166,25 @@ const STORE = [
 			slytherin: 5,
 			gryffindor: 2
 			},
-			{text: 'Playing quidditch '} 
-			{text: 'In my garden for the forseeable future.", 
-			{text: 'Puzzles. The more complicated, the better.'}
-			], 
+			{text: 'Playing quidditch',
+			ravenclaw: 0,
+			hufflepuff: 5,
+			gryffindor:10,
+			slytherin: 2
+			},
+			{text: 'In my garden for the forseeable future.',
+			ravenclaw: 5,
+			hufflepuff:10,
+			gryffindor:2,
+			slytherin:0
+			},
+			{text: 'Puzzles. The more complicated, the better.',
+			ravenclaw:5,
+			hufflepuff:0,
+			slytherin: 10,
+			gryffindor:2
+			}
+		], 
 	},
 
 
@@ -256,13 +210,13 @@ const STORE = [
 			hufflepuff: 10,
 			gryffindor: 5
 			},
-			{text: `come up with an elaborate (but likely flawed) plan to make it to school and imagine how cool your entrance is going to be!',
+			{text: 'come up with an elaborate (but likely flawed) plan to make it to school and imagine how cool your entrance is going to be!',
 			ravenclaw: 2,
 			slytherin: 0,
 			hufflepuff: 5,
 			gryffindor: 10
 			}
-			], 
+		], 
 	},
 
 
@@ -293,7 +247,7 @@ const STORE = [
 			slytherin: 2,
 			hufflepuff: 2
 			}
-			], 
+		], 
 	},
 
 	{
@@ -305,7 +259,6 @@ const STORE = [
 			hufflepuff: 0,
 			gryffindor: 2 
 			},
-
 			{text: 'Help them find their way to their next class, even if it means being late to yours.', 
 			gryffindor: 10,
 			slytherin: 0,
@@ -318,13 +271,13 @@ const STORE = [
 			ravenclaw: 5,
 			hufflepuff: 0
 			},
-			{text: 'Help them find their way and invite them to sit with you and your friends during dinner.'
+			{text: 'Help them find their way and invite them to sit with you and your friends during dinner.',
 			hufflepuff: 10,
 			gryffindor: 5,
 			ravenclaw: 2,
 			slytherin: 0
 			},
-			] 
+		], 
 	}
 	
-	]*/
+]
