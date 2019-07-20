@@ -148,7 +148,7 @@ const STORE = [
 			hufflepuff: 2,
 			gryffindor: 2
 			},
-			{text: 'jumps to your defense by challening the other person to a duel.',
+			{text: 'by challenging the other person to a duel.',
 			ravenclaw: 0,
 			slytherin: 5,
 			gryffindor: 10,
@@ -178,7 +178,7 @@ const STORE = [
 			gryffindor:2,
 			slytherin:0
 			},
-			{text: 'Puzzles. The more complicated, the better.',
+			{text: 'solving puzzles. The more complicated, the better.',
 			ravenclaw:5,
 			hufflepuff:0,
 			slytherin: 10,

@@ -47,19 +47,19 @@ function generateQuestion(){
 	    		<form id='myform'>
 	    			<fieldset>
 	    				<label class="answerOption">
-	    					<input type="radio" value="0" name="answer" class="checkAnswer" required>
+	    					<input type="checkbox" value="0" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[0].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    					<input type="radio" value="1" name="answer" class="checkAnswer" required>
+	    					<input type="checkbox" value="1" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[1].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    					<input type="radio" value="2" name="answer" class="checkAnswer" required>
+	    					<input type="checkbox" value="2" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[2].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    					<input type="radio" value="3" name="answer" class="checkAnswer" required>
+	    					<input type="checkbox" value="3" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[3].text}</span>
 	    				</label>
 	    				<button role= submit class="submit">Next</button>
@@ -83,6 +83,7 @@ function renderQuestion(){
 //responsible for tracking which question the user is on
 function trackQuestionNumber(){
 	questionNumber ++;
+	$('.questionNumber').text(questionNumber);
 }
 
 //responsible for tracking the scores of each house
@@ -117,7 +118,7 @@ function patronusQuestion(){
 		`<div class="question-10">
 	    	<h2>What is your Patronus?</h2>
 	    		<form id='myform'>
-	    			<input type=text id='patronus' value=Unicorn required</input>
+	    			<input type=text id='patronus' value=ex.Unicorn required</input>
 	    			<button type="submit"class="resultsButton">Find my BFF!</button>
 	    		</form>
 	    </div>`
