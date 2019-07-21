@@ -43,7 +43,7 @@ function handleClickToStart() {
 //respoonsible for generating the question
 function generateQuestion(){
 	if (questionNumber < STORE.length) {
-		return `<div class="question-${questionNumber}">
+		return `<div id='questionForm' class="question-${questionNumber}">
 	    	<h2>${STORE[questionNumber].question}</h2>
 	    		<form id='myform'>
 	    			<fieldset>

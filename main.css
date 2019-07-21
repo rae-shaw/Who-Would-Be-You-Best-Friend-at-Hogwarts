@@ -68,7 +68,7 @@ h1, h2 {
 	padding: 2em 3em;
 }
 
-.questionForm {
+/*.questionForm {
 	display: -webkit-box;
   	display: -webkit-flex;
  	display: -ms-flexbox;
@@ -76,6 +76,18 @@ h1, h2 {
 	margin: 1em 1em;
 	text-align: center;
 	background-color: wheat;
+}*/
+
+#questionForm {
+	display: -webkit-box;
+	display: -moz-box;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: flex;
+  	margin: 1em 1em;
+	text-align: center;
+	background-color: wheat;
+  	flex-direction: column;
 }
 
 .question-10{
@@ -99,8 +111,8 @@ fieldset {
   	display: -webkit-flex;
   	display: -ms-flexbox;
   	display: flex;
+  	flex-direction: column;
 	border: none;
-	align-items: center;
 }
 
 .resultsButton, .submit, .startButton {
