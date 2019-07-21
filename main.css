@@ -6,7 +6,15 @@
 
 
 body {
-	display: flex;
+	display: -webkit-box;
+	 display: -moz-box;
+ 	display: -webkit-flex;
+	display: -ms-flexbox;
+ 	display: flex;
+ 	-webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
 	flex-direction: column;
 	background-image: url(rikki-austin-cathedralhallway2.jpg);
   	background-size: 90%;
@@ -22,16 +30,29 @@ body {
 
 header {
 	color: white;
-	display: flex;
+	display: -webkit-box;
+	display: -moz-box;
+ 	display: -webkit-flex;
+	display: -ms-flexbox;
+ 	display: flex;
 }
 
-.question-score-counter {
+.score-question-counter {
+	display: none;
 	align-content: flex-end;
 }
 
 main {
-	flex-direction:column;
-	display: flex;
+ 	display: -webkit-box;
+ 	display: -moz-box;
+  	display: -webkit-flex;
+ 	display: -ms-flexbox;
+ 	display: flex;
+ 	-webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
+	flex-direction: column;
 	width: 90%;
 	padding: 2em 3em;
 	align-self: center;
@@ -48,7 +69,10 @@ h1, h2 {
 }
 
 .questionForm {
-	display: flex;
+	display: -webkit-box;
+  	display: -webkit-flex;
+ 	display: -ms-flexbox;
+  	display: flex;
 	margin: 1em 1em;
 	text-align: center;
 	background-color: wheat;
@@ -59,13 +83,22 @@ h1, h2 {
 }
 
 .answerOption {
+	display: flex;
+	display: -webkit-box;
+	display: -moz-box;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
 	text-align: justify;
-	align-items: center;
+	padding: 10px;
 }
 
 
 fieldset {
-	display: flex;
+	display: -webkit-box;
+	display: -moz-box;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: flex;
 	border: none;
 	align-items: center;
 }
@@ -100,5 +133,7 @@ fieldset {
 	width: 20px;
 	height: 20px;
 	border: 3px black;
+	margin-top: 1em;
 }
+
 

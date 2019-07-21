@@ -112,7 +112,7 @@ const STORE = [
 			slytherin: 5,
 			gryffindor: 0
 			},
-			{text: `I'll study after quidditch practice. And dinner. I'm sure it will be fine.`,
+			{text: `Study after quidditch practice. And dinner. You're confident it will be fine.`,
 			ravenclaw: 0,
 			hufflepuff: 5,
 			gryffindor: 10,
@@ -130,7 +130,7 @@ const STORE = [
 	{
 		question: 'Your BFF jumps to your defense by',
 		answers: [
-			{text: `first checking on you and then making sure the other person understands how they're hurt you.`, 
+			{text: `first checking on you and then making sure the other person understands how they've hurt you.`, 
 			ravenclaw: 5,
 			slytherin: 0,
 			hufflepuff: 10,
@@ -172,13 +172,13 @@ const STORE = [
 			gryffindor:10,
 			slytherin: 2
 			},
-			{text: 'In my garden.',
+			{text: 'In a garden.',
 			ravenclaw: 5,
 			hufflepuff:10,
 			gryffindor:2,
 			slytherin:0
 			},
-			{text: 'solving puzzles. The more complicated, the better.',
+			{text: 'Solving puzzles. The more complicated, the better.',
 			ravenclaw:5,
 			hufflepuff:0,
 			slytherin: 10,

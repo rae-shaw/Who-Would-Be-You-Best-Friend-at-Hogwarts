@@ -33,6 +33,7 @@ function handleClickToStart() {
 		event.preventDefault();
 		$('.quizStart').remove();
 		renderQuestion();
+		$('.score-question-counter').toggleClass();
 	});
 	
 }
@@ -47,19 +48,19 @@ function generateQuestion(){
 	    		<form id='myform'>
 	    			<fieldset>
 	    				<label class="answerOption">
-	    					<input type="checkbox" value="0" name="answer" class="checkAnswer" required>
+	    					<input type="radio" value="0" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[0].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    					<input type="checkbox" value="1" name="answer" class="checkAnswer" required>
+	    					<input type="radio" value="1" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[1].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    					<input type="checkbox" value="2" name="answer" class="checkAnswer" required>
+	    					<input type="radio" value="2" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[2].text}</span>
 	    				</label>
 	    				<label class="answerOption">
-	    					<input type="checkbox" value="3" name="answer" class="checkAnswer" required>
+	    					<input type="radio" value="3" name="answer" class="checkAnswer" required>
 	    					<span>${STORE[questionNumber].answers[3].text}</span>
 	    				</label>
 	    				<button role= submit class="submit">Next</button>
@@ -132,6 +133,7 @@ function typeResults() {
 		console.log('clicked resultsButton')
 		event.preventDefault();
 		renderResults();
+		$('.question-counter').remove();
 	});
 }
 
