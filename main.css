@@ -68,16 +68,6 @@ h1, h2 {
 	padding: 2em 3em;
 }
 
-/*.questionForm {
-	display: -webkit-box;
-  	display: -webkit-flex;
- 	display: -ms-flexbox;
-  	display: flex;
-	margin: 1em 1em;
-	text-align: center;
-	background-color: wheat;
-}*/
-
 #questionForm {
 	display: -webkit-box;
 	display: -moz-box;
@@ -89,18 +79,6 @@ h1, h2 {
 	background-color: wheat;
   	flex-direction: column;
 }
-
-/*.questionForm {
-	display: -webkit-box;
-	display: -moz-box;
-  	display: -webkit-flex;
-  	display: -ms-flexbox;
-  	display: flex;
-  	margin: 1em 1em;
-	text-align: center;
-	background-color: wheat;
-  	flex-direction: column;
-}*/
 
 .question-10{
 	background-color: wheat;
