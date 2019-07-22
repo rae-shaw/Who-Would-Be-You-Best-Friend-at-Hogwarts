@@ -115,7 +115,7 @@ function answerValueNextQuestionRender(){
 
 //responsible for displaying the final question
 function patronusQuestion(){
-	$('.questionForm').html(
+	$('#questionForm').html(
 		`<div class="question-10">
 	    	<h2>What is your Patronus?</h2>
 	    		<form id='myform'>
@@ -129,7 +129,7 @@ function patronusQuestion(){
 
 //responsible for the click action on the patronus question page
 function typeResults() {
-	$('.questionForm').on('click', '.resultsButton', function(event){
+	$('#questionForm').on('click', '.resultsButton', function(event){
 		console.log('clicked resultsButton')
 		event.preventDefault();
 		renderResults();
@@ -150,7 +150,7 @@ function getFinalCharacter(arrayJson){
 function renderResultsPage(character){
 	let characterName = character.name;
 	let characterURL = `https://harrypotter.fandom.com/${characterName.split(' ').join('_')}`;
-	$('.questionForm').html(
+	$('#questionForm').html(
 		`<div class=results>
 			<h2>Great news! Your BFF at Hogwarts is ${characterName}</h2>
 			<p>To learn more about your BFF click<a href='${characterURL}' target= '_blank'> here.</a></p>

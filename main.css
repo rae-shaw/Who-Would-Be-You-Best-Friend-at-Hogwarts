@@ -90,8 +90,29 @@ h1, h2 {
   	flex-direction: column;
 }
 
+/*.questionForm {
+	display: -webkit-box;
+	display: -moz-box;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: flex;
+  	margin: 1em 1em;
+	text-align: center;
+	background-color: wheat;
+  	flex-direction: column;
+}*/
+
 .question-10{
+	background-color: wheat;
+  	display: -webkit-box;
+	display: -moz-box;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
 	padding: 1em;
+	margin: 1em 1em;
 }
 
 .answerOption {
@@ -129,12 +150,21 @@ fieldset {
 	text-shadow: 2px 2px black;
 }
 
+#myform {
+	display: -webkit-box;
+	display: -moz-box;
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: flex;
+  	flex-direction: column;
+}
 
 #patronus {
 	font-size: 18px;
-	width: 50%;
+	width: 75%;
 	height: 30px;
 	font-family: 'Oswald', sans-serif;
+	align-self: flex-end;
 }
 
 .resultsButton, .submit {

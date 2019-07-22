@@ -30,7 +30,7 @@ const STORE = [
 			slytherin: 0,
 			gryffindor: 10
 			}
-		], 
+		],
 	},
 
 	{
