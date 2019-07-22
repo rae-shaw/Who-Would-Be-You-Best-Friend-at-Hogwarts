@@ -12,7 +12,7 @@ Screenshots
 
 ![Question Page](question_ex.png "Example Question Page")
 
-Live [Link] (https://rae-shaw.github.io/Who-Would-Be-You-Best-Friend-at-Hogwarts/)
+Live [Link](https://rae-shaw.github.io/Who-Would-Be-You-Best-Friend-at-Hogwarts/)
 
 Built with:
 -----------
