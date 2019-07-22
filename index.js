@@ -21,15 +21,12 @@ const constantParams ='role=student'
 //responsible for creating the quiz
 function createQuiz(){
 	handleClickToStart();
-  	console.log('create quiz ran!');
-  	answerValueNextQuestionRender();
+   	answerValueNextQuestionRender();
 }
 
 //respsonsible for handling the click to start
 function handleClickToStart() {
-	console.log('in handleClickToStart');
 	$('.quizStart').on('click', '.startButton', function(event) {
-		console.log('clicked start!');
 		event.preventDefault();
 		$('.quizStart').remove();
 		renderQuestion();
@@ -99,7 +96,6 @@ function trackHouseScore(answernumber){
 function answerValueNextQuestionRender(){
 	$('.questionForm').on('click', '.submit', function (event) {
 		event.preventDefault();
-		console.log('clicked submit!')
 		if ($('.checkAnswer').is(':checked')){
 				let selected = $('input:checked');
 				let userAnswer = selected.val();
@@ -130,7 +126,6 @@ function patronusQuestion(){
 //responsible for the click action on the patronus question page
 function typeResults() {
 	$('#questionForm').on('click', '.resultsButton', function(event){
-		console.log('clicked resultsButton')
 		event.preventDefault();
 		renderResults();
 		$('.question-counter').remove();
@@ -141,7 +136,6 @@ function typeResults() {
 function getFinalCharacter(arrayJson){
 	const patronus = $('#patronus').val();
 	let hashNumber = hash(patronus);
-	console.log("getReady: hashNumber is " + hashNumber);
 	let index= hashNumber % arrayJson.length;
 	renderResultsPage(arrayJson[index]);	
 }
@@ -168,7 +162,6 @@ function renderResults(){
 //responsible for creating an array of final, total scores
 function createTotalScoresArray(){
 	let finalScores = [ravenclawScore, gryffindorScore, slytherinScore, hufflepuffScore];
-	console.log(finalScores[0]);
 	return finalScores;
 }
 
@@ -183,7 +176,6 @@ function highestHouse(scoreArray) {
 		}
 	}
 	let houseName = houseNames[newIndex];
-	console.log(houseName);
 	return houseName;
 }
 
